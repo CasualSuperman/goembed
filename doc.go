@@ -3,7 +3,7 @@
 Making it happen:
 	1. Add code to serve resources (see example below)
 	2. Compile your executable
-	3. Run the `gotogether` script from https://github.com/carbocation/gotogether/src
+	3. Run the `goembed` script from https://github.com/CasualSuperman/goembed/goembed
 	4. Deploy
 
 Example code:
@@ -15,7 +15,7 @@ Example code:
 		"net/http"
 		"os"
 
-		"github.com/carbocation/gotogether"
+		"github.com/CasualSuperman/goembed"
 	)
 
 	type params struct {
@@ -23,7 +23,7 @@ Example code:
 	}
 
 	func indexHandler(w http.ResponseWriter, req *http.Request) {
-		t, err := gotogether.LoadTemplates(nil, "t.html")
+		t, err := goembed.LoadTemplates(nil, "t.html")
 		if err != nil {
 			http.NotFound(w, req)
 		}
@@ -33,7 +33,7 @@ Example code:
 	}
 
 	func main() {
-		gotogether.Handle("/static/")
+		goembed.Handle("/static/")
 		http.HandleFunc("/", indexHandler)
 		if err := http.ListenAndServe(":8080", nil); err != nil {
 			fmt.Fprintf(os.Stderr, "error: %s\n", err)
@@ -41,4 +41,4 @@ Example code:
 		}
 	}
 */
-package gotogether
+package goembed

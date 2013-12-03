@@ -1,4 +1,4 @@
-package gotogether
+package goembed
 
 import (
 	"archive/zip"
